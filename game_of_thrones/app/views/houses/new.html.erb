@@ -1,5 +1,22 @@
 <h2>New House</h2>
 
+
+
+<% if @house.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@house.errors.count, "error") %> prohibited
+        this house from being saved:
+      </h2>
+      <ul>
+        <% @house.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
 <form action="/houses" method="post" >
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <label for="house[name]">Name:</label>
@@ -10,3 +27,5 @@
 
   <input type="submit" value="Create">
 </form>
+
+<p><%= link_to 'Back', houses_path %></p>

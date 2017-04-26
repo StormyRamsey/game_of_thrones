@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170425203756) do
+ActiveRecord::Schema.define(version: 20170426152003) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "characters", force: :cascade do |t|
+    t.string   "name"
+    t.string   "img_url"
+    t.integer  "house_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["house_id"], name: "index_characters_on_house_id", using: :btree
+  end
 
   create_table "houses", force: :cascade do |t|
     t.string   "name"
@@ -22,4 +31,5 @@ ActiveRecord::Schema.define(version: 20170425203756) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "characters", "houses"
 end

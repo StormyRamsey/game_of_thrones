@@ -1,0 +1,12 @@
+<%= form_for([@house, @house.characters.build]) do |f| %>
+  <p>
+    <%= f.label :Name %><br>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.text_field :img_url %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
